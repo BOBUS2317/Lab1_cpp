@@ -7,7 +7,7 @@ using namespace std;
 void f1() {
     int* a = new int[3]{5, 4, 3};
     int sum = 0;
-    for (int i = 0; i <= 3; i++) {
+    for (int i = 0; i < 3; i++) {
         sum += a[i];
     }
     cout << "Sum: " << sum << endl;
@@ -18,7 +18,6 @@ void f1() {
 void f2() {
     int* a = new int(5);
     cout << "A: " << *a << endl;
-    delete a;
     delete a;
 }
 
