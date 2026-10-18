@@ -33,6 +33,7 @@ void f4() {
     int* a = new int[10];
     a[0] = 1;
     cout << "A: " << a[0] << endl;
+    delete[] a;
 }
 
 int main() {
