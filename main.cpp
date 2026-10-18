@@ -23,7 +23,7 @@ void f2() {
 
 // Ошибка 3 (UBSan): переполнение int
 void f3() {
-    int x = INT_MAX;
+    long long x = INT_MAX;
     x = x + 1;
     cout << "X: " << x << endl;
 }
