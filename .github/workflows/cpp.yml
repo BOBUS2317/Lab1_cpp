@@ -24,3 +24,39 @@ jobs:
 
       - name: Test
         run: ctest --preset linux-asan
+
+  windows:
+    runs-on: windows-latest
+
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install MinGW, CMake, Ninja
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          pacboy: >-
+            gcc:p
+            cmake:p
+            ninja:p
+
+      - name: Configure
+        run: cmake --preset windows-release
+
+      - name: Build
+        run: cmake --build --preset windows-release
+
+      - name: Run
+        run: ./out/build/windows-release/Cpp.exe
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cpp-windows
+          path: out/build/windows-release/Cpp.exe
